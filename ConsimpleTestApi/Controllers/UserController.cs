@@ -48,9 +48,8 @@ namespace ConsimpleTestApi.Controllers
                 var response = await _userService.GetUsersByBirthAsync(birthDate);
                 return Ok(response);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                _logger.LogError(ex, "An unexpected error occurred while register new user.");
                 return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unexpected error occurred. Please try again later." });
             }
         }

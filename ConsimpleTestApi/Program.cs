@@ -1,4 +1,6 @@
 
+using ConsimpleTestApi.BL.Product;
+using ConsimpleTestApi.BL.Purchase;
 using ConsimpleTestApi.BL.User;
 using ConsimpleTestApi.DAL;
 using ConsimpleTestApi.Models.DTO.User;
@@ -30,6 +32,8 @@ namespace ConsimpleTestApi
             });
 
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 
             builder.Services.AddTransient<IValidator<CreateUserRequest>, CreateUserRequestValidator>();
 

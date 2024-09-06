@@ -1,6 +1,12 @@
-﻿namespace ConsimpleTestApi.BL.Purchase
+﻿using ConsimpleTestApi.Models.DTO.Purchase;
+using ConsimpleTestApi.Models.Entities;
+
+namespace ConsimpleTestApi.BL.Purchase
 {
-    public class IPurchaseService
+    public interface IPurchaseService
     {
+        public Task CreateAsync(CreatePurchaseRequest createProductRequest);
+
+        public Task<ICollection<PurchaseEntity>> GetAllAsync();
     }
 }

@@ -2,7 +2,7 @@
 {
     public class PurchaseEntity : BaseEntity
     {
-        public DateTime PurchaseDate { get; set; }
+        public DateTime Date { get; set; }
 
         public int TotalCost { get; set; }
 

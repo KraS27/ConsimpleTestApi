@@ -8,6 +8,6 @@ namespace ConsimpleTestApi.BL.User
 
         public Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate);
 
-        public Task<ICollection<LastCustomersResponse>> GetLastCustomers(int daysCount);
+        public Task<ICollection<LastCustomersResponse>> GetRecentCustomersAsync(int days);
     }
 }

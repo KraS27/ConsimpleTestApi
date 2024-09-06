@@ -12,7 +12,7 @@ namespace ConsimpleTestApi.DAL.Configurrations
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.PurchaseDate)
+            builder.Property(x => x.Date)
                 .HasColumnName("purchase_date")
                 .IsRequired();
 

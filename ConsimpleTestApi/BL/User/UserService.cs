@@ -3,6 +3,7 @@ using ConsimpleTestApi.Models.DTO.User;
 using ConsimpleTestApi.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsimpleTestApi.BL.User
 {
@@ -38,16 +39,29 @@ namespace ConsimpleTestApi.BL.User
             _logger.LogInformation($"User {user.Id} register at {user.CreatedAt}");
         }
 
-        public Task<ICollection<LastCustomersResponse>> GetLastCustomers(int daysCount)
+        public async Task<ICollection<LastCustomersResponse>> GetRecentCustomersAsync(int days)
         {
-            throw new NotImplementedException();
+            var dateThreshold = DateTime.UtcNow.AddDays(-days);
+
+            var response = await _context.Purchases
+                .Where(p => p.Date >= dateThreshold)
+                .GroupBy(p => p.User)
+                .Select(g => new LastCustomersResponse
+                {
+                    Id = g.Key.Id,
+                    FullName = $"{g.Key.FirstName} {g.Key.LastName} {g.Key.Patronymic}",
+                    LastPurchase = g.Max(p => p.Date)
+                })
+                .ToListAsync();
+
+            return response;
         }
 
         public async Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate)
         {
             var response = await _context.Users
                 .AsNoTracking()
-                .Where(x => x.BirthDate == birthDate)
+                .Where(x => x.BirthDate.Month == birthDate.Month && x.BirthDate.Day == birthDate.Day)
                 .Select(x => new UserBirthdayResponse
                 {
                     Id = x.Id,
