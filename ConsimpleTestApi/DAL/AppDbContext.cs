@@ -14,6 +14,8 @@ namespace ConsimpleTestApi.DAL
 
         public DbSet<ProductEntity> Products {  get; set; }
 
+        public DbSet<ProductPurchaseEntity> ProductPurchases { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

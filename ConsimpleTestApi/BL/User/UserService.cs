@@ -39,6 +39,21 @@ namespace ConsimpleTestApi.BL.User
             _logger.LogInformation($"User {user.Id} register at {user.CreatedAt}");
         }
 
+        public async Task<ICollection<PopularCatagoryResponse>> GetPopularCatagoryAsync(Guid customerId)
+        {
+            var categories = await _context.ProductPurchases
+                .Where(x => x.Purchase.User.Id == customerId)
+                .GroupBy(x => x.Product.Category)
+                .Select(x => new PopularCatagoryResponse
+                {
+                    Category = x.Key.ToString(),
+                    TotalUnitsPurchased = x.Sum(pi => pi.Quantity)
+                })
+                .ToListAsync();
+
+            return categories;
+        }
+
         public async Task<ICollection<LastCustomersResponse>> GetRecentCustomersAsync(int days)
         {
             var dateThreshold = DateTime.UtcNow.AddDays(-days);

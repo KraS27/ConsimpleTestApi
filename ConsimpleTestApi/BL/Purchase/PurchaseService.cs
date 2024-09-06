@@ -24,11 +24,12 @@ namespace ConsimpleTestApi.BL.Purchase
 
             var newPurchaseId = Guid.NewGuid();
             var productPurchase = createProductRequest
-                .Products
+                .ProductsQuantity
                 .Select(x => new ProductPurchaseEntity
                 {
-                    ProductId = x,
-                    PurchaseId = newPurchaseId
+                    ProductId = x.ProductId,
+                    PurchaseId = newPurchaseId,
+                    Quantity = x.Quantity
                 }).ToList();
 
             var newPurchase = new PurchaseEntity

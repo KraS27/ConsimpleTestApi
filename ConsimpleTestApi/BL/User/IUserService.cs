@@ -9,5 +9,7 @@ namespace ConsimpleTestApi.BL.User
         public Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate);
 
         public Task<ICollection<LastCustomersResponse>> GetRecentCustomersAsync(int days);
+
+        public Task<ICollection<PopularCatagoryResponse>> GetPopularCatagoryAsync(Guid customerId);
     }
 }

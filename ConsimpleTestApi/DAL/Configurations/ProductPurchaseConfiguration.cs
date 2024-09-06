@@ -12,6 +12,10 @@ namespace ConsimpleTestApi.DAL.Configurrations
 
             builder.HasKey(x => new { x.ProductId, x.PurchaseId });
 
+            builder.Property(x => x.Quantity)
+                .HasColumnName("quantity")
+                .IsRequired();
+
             builder.HasOne(x => x.Product)
                 .WithMany(p => p.ProductPurchases)
                 .HasForeignKey(p => p.ProductId);

@@ -53,5 +53,33 @@ namespace ConsimpleTestApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unexpected error occurred. Please try again later." });
             }
         }
+
+        [HttpGet("users/{days:int}")]
+        public async Task<IActionResult> GetRecentCustomersAsync(int days)
+        {
+            try
+            {
+                var response = await _userService.GetRecentCustomersAsync(days);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unexpected error occurred. Please try again later." });
+            }
+        }
+
+        [HttpGet("users/{id:Guid}")]
+        public async Task<IActionResult> GetPopularCatagoryAsync(Guid id)
+        {
+            try
+            {
+                var response = await _userService.GetPopularCatagoryAsync(id);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An unexpected error occurred. Please try again later." });
+            }
+        }
     }
 }

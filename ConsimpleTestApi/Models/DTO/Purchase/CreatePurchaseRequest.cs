@@ -6,7 +6,7 @@
 
         public int TotalCost { get; set; }
 
-        public ICollection<Guid> Products { get; set; } = new List<Guid>();
+        public ICollection<ProductsQuantityDTO> ProductsQuantity { get; set; } = new List<ProductsQuantityDTO>();
 
         public Guid UserId { get; set; }
     }
