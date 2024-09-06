@@ -38,6 +38,11 @@ namespace ConsimpleTestApi.BL.User
             _logger.LogInformation($"User {user.Id} register at {user.CreatedAt}");
         }
 
+        public Task<ICollection<LastCustomersResponse>> GetLastCustomers(int daysCount)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate)
         {
             var response = await _context.Users
