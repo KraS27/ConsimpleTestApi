@@ -12,6 +12,6 @@ namespace ConsimpleTestApi.Models.Entities
 
         public ProductCategory Category { get; set; }
 
-        public ICollection<Purchase>? Purchases { get; set; }
+        public ICollection<ProductPurchase>? ProductPurchases { get; set; }
     }
 }

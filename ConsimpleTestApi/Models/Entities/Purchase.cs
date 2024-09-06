@@ -6,7 +6,7 @@
 
         public int TotalCost { get; set; }
 
-        public ICollection<Product>? Products { get; set; }
+        public ICollection<ProductPurchase>? ProductPurchases { get; set; }
 
         public User? User { get; set; }
     }
