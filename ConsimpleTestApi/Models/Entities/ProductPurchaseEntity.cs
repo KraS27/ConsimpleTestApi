@@ -1,11 +1,11 @@
 ﻿namespace ConsimpleTestApi.Models.Entities
 {
-    public class ProductPurchase
+    public class ProductPurchaseEntity
     {
         public Guid PurchaseId { get; set; }
-        public Purchase? Purchase { get; set; }
+        public PurchaseEntity? Purchase { get; set; }
 
         public Guid ProductId { get; set; }
-        public Product? Product { get; set; }
+        public ProductEntity? Product { get; set; }
     }
 }

@@ -8,11 +8,11 @@ namespace ConsimpleTestApi.DAL
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         
-        public DbSet<User> Users {  get; set; } 
+        public DbSet<UserEntity> Users {  get; set; } 
 
-        public DbSet<Purchase> Purchases {  get; set; } 
+        public DbSet<PurchaseEntity> Purchases {  get; set; } 
 
-        public DbSet<Product> Products {  get; set; }
+        public DbSet<ProductEntity> Products {  get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

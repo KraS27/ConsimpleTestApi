@@ -2,7 +2,7 @@
 
 namespace ConsimpleTestApi.Models.Entities
 {
-    public class Product : BaseEntity
+    public class ProductEntity : BaseEntity
     {
         public string Name { get; set; } = null!;
 
@@ -12,6 +12,6 @@ namespace ConsimpleTestApi.Models.Entities
 
         public ProductCategory Category { get; set; }
 
-        public ICollection<ProductPurchase>? ProductPurchases { get; set; }
+        public ICollection<ProductPurchaseEntity>? ProductPurchases { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConsimpleTestApi.DAL.Configurrations
 {
-    public class ProductPurchaseConfiguration : IEntityTypeConfiguration<ProductPurchase>
+    public class ProductPurchaseConfiguration : IEntityTypeConfiguration<ProductPurchaseEntity>
     {
-        public void Configure(EntityTypeBuilder<ProductPurchase> builder)
+        public void Configure(EntityTypeBuilder<ProductPurchaseEntity> builder)
         {
             builder.ToTable("productPurchase");
 
