@@ -73,10 +73,12 @@ namespace ConsimpleTestApi.BL.User
         }
 
         public async Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate)
-        {
+        {          
             var response = await _context.Users
                 .AsNoTracking()
-                .Where(x => x.BirthDate.Month == birthDate.Month && x.BirthDate.Day == birthDate.Day)
+                .Where(x => x.BirthDate.Year == birthDate.Year
+                && x.BirthDate.Month == birthDate.Month 
+                && x.BirthDate.Day == birthDate.Day)
                 .Select(x => new UserBirthdayResponse
                 {
                     Id = x.Id,
