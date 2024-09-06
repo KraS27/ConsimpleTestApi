@@ -1,5 +1,9 @@
 
+using ConsimpleTestApi.BL.User;
 using ConsimpleTestApi.DAL;
+using ConsimpleTestApi.Models.DTO.User;
+using ConsimpleTestApi.Validators.User;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -24,6 +28,10 @@ namespace ConsimpleTestApi
             {
                 options.UseSqlServer(MsSqlConnectionString);
             });
+
+            builder.Services.AddScoped<IUserService, UserService>();
+
+            builder.Services.AddTransient<IValidator<CreateUserRequest>, CreateUserRequestValidator>();
 
             var app = builder.Build();
 

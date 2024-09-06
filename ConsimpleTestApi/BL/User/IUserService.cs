@@ -4,8 +4,8 @@ namespace ConsimpleTestApi.BL.User
 {
     public interface IUserService
     {
-        public Task Create(CreateUserRequest createUserRequest);
+        public Task CreateAsync(CreateUserRequest createUserRequest);
 
-        public Task<ICollection<UserBirthdayResponse>> GetUsersByBirthDate(DateTime birthDate);
+        public Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate);
     }
 }

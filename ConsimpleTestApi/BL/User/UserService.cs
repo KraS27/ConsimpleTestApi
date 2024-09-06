@@ -17,13 +17,14 @@ namespace ConsimpleTestApi.BL.User
             _logger = logger;
         }
 
-        public async Task Create(CreateUserRequest createUserRequest)
+        public async Task CreateAsync(CreateUserRequest createUserRequest)
         {
             if (createUserRequest == null)
                 throw new ArgumentNullException(nameof(createUserRequest));
 
             var user = new UserEntity
             {
+                Id = Guid.NewGuid(),
                 FirstName = createUserRequest.FirstName,
                 LastName = createUserRequest.LastName,
                 Patronymic = createUserRequest.Patronymic,
@@ -34,9 +35,10 @@ namespace ConsimpleTestApi.BL.User
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+            _logger.LogInformation($"User {user.Id} register at {user.CreatedAt}");
         }
 
-        public async Task<ICollection<UserBirthdayResponse>> GetUsersByBirthDate(DateTime birthDate)
+        public async Task<ICollection<UserBirthdayResponse>> GetUsersByBirthAsync(DateTime birthDate)
         {
             var response = await _context.Users
                 .AsNoTracking()
