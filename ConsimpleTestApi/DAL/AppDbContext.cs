@@ -1,5 +1,6 @@
 ﻿using ConsimpleTestApi.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace ConsimpleTestApi.DAL
 {
@@ -11,6 +12,11 @@ namespace ConsimpleTestApi.DAL
 
         public DbSet<Purchase> Purchases {  get; set; } 
 
-        public DbSet<Product> Products {  get; set; } 
+        public DbSet<Product> Products {  get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
 }
